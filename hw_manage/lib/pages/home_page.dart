@@ -50,10 +50,10 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-              child: TimeBar(),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+            //   child: TimeBar(),
+            // ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
               child: Text(
@@ -64,10 +64,13 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.bold),
               ),
             ),
-            Padding(
+            Expanded(
+                child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-              child: TotalRankCard(),
-            ),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: TotalRankCard()),
+            )),
           ]),
     );
   }

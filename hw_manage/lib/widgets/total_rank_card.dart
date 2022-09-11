@@ -45,8 +45,12 @@ class _TotalRankCardState extends State<TotalRankCard> {
               return Text('Can\'t Connect to Server');
             }
             SmartDialog.dismiss();
-            return Column(
-              children: userWidgetList,
+            return ListView.builder(
+              shrinkWrap: false,
+              itemCount: userWidgetList.length,
+              itemBuilder: ((context, index) {
+                return userWidgetList[index];
+              }),
             );
           }
           SmartDialog.showLoading();

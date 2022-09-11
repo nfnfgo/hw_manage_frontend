@@ -13,11 +13,22 @@ class UserCard extends StatelessWidget {
   User user;
   UserCard(this.user, {super.key});
 
-  Color getUserColor(User user) {
-    if (user.point! >= 100) {
-      return Colors.red[500]!;
+  List<Color> getUserColor(User user) {
+    if (user.point! >= 300) {
+      return [Colors.red[400]!, Colors.red[900]!];
+    } else if (user.point! >= 100) {
+      return [Colors.blueGrey[400]!, Colors.blueGrey[800]!];
+    } else if (user.point! >= 50) {
+      return [Colors.blue[300]!, Colors.blue[800]!];
+    } else if (user.point! >= 30) {
+      return [
+        Colors.grey[400]!,
+        Color.lerp(Colors.grey[600], Colors.blue[400], 0.4)!
+      ];
+    } else if (user.point! >= 10) {
+      return [Colors.grey[400]!, Colors.grey[600]!];
     }
-    return Colors.grey[500]!;
+    return [Colors.grey[600]!, Colors.grey[600]!];
   }
 
   @override
@@ -26,7 +37,12 @@ class UserCard extends StatelessWidget {
       // height: 50,
       width: double.infinity,
       decoration: BoxDecoration(
-          color: getUserColor(user), borderRadius: BorderRadius.circular(15)),
+          //color: getUserColor(user),
+          borderRadius: BorderRadius.circular(15),
+          gradient: LinearGradient(
+              colors: getUserColor(user),
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
